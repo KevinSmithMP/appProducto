@@ -4,7 +4,6 @@ document.querySelector('#formRegistrarProducto').addEventListener('submit',e=>{
     const data = Object.fromEntries(
       	new FormData(e.target)
     )
-    console.log(data);
     llamandoAPI(data)
 })
 
@@ -12,10 +11,10 @@ const llamandoAPI = async (data) => {
 	const options = {
 		method: 'POST',
 		headers: {
-			'Content-Type':'application/json',
-			'Content-Type':'multipart/form-data; boundary=something'
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
 		},
-        body:data,
+        body:JSON.stringify(data),
 		cache: 'no-cache'
 	}
 	const respuesta = await fetch(`/api/productos/`,options)
